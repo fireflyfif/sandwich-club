@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,8 +41,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private String mOriginString;
     private String mDescriptionString;
-    private List<String> mIngredientsList;
-    private List<String> mAlsoKnownAsList;
+    private List<String> mIngredientsList = new ArrayList<>();
+    private List<String> mAlsoKnownAsList = new ArrayList<>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,33 +67,6 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        if (intent.hasExtra(SANDWICH_ORIGIN)) {
-            mOriginString = intent.getStringExtra(SANDWICH_ORIGIN);
-            mOrigin.setText(mOriginString);
-        }
-
-        if (intent.hasExtra(DESCRIPTION)) {
-            // Has to be a List<String>
-            mDescriptionString = intent.getStringExtra(DESCRIPTION);
-            mDescription.setText(mDescriptionString);
-        }
-
-        if (intent.hasExtra(KNOWN_AS)) {
-            // Both are working, which is better?
-            int nameIndex = getIntent().getIntExtra(KNOWN_AS, 0);
-            mAlsoKnownAs.append(mAlsoKnownAsList.get(nameIndex));
-
-            // Both are working, which is better?
-//            mAlsoKnownAsList = intent.getStringArrayListExtra(KNOWN_AS);
-//            String value = mAlsoKnownAsList.get(position);
-//            mAlsoKnownAs.setText(value);
-        }
-
-        if (intent.hasExtra(INGREDIENTS)) {
-            int ingredientIndex = intent.getIntExtra(INGREDIENTS, 0);
-            mIngredients.append(mIngredientsList.get(ingredientIndex));
-        }
-
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
@@ -102,23 +76,12 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
-        mOrigin.setText(sandwich.getPlaceOfOrigin());
-        mDescription.setText(sandwich.getDescription());
-
-        mAlsoKnownAs.setText(sandwich.getAlsoKnownAs().toString());
-
-//        String alsoKnownAsString = mAlsoKnownAs.toString();
-//        String[] part =alsoKnownAsString.split("\\s*,\\s*");
-
-
-        mIngredients.setText(sandwich.getIngredients().toString());
-
     }
 
     private void closeOnError() {
@@ -126,8 +89,15 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
-
+    private void populateUI(Sandwich sandwich) {
+        mOrigin.setText(sandwich.getPlaceOfOrigin());
+        mDescription.setText(sandwich.getDescription());
+        mAlsoKnownAs.setText(sandwich.getAlsoKnownAs().toString()
+                .replaceAll("\\[", "")
+                .replaceAll("\\]", ""));
+        mIngredients.setText(sandwich.getIngredients().toString()
+                .replaceAll("\\[", "")
+                .replaceAll("\\]", ""));
 
     }
 }
