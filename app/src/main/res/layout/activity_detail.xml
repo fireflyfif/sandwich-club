@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/image_iv"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/image_height"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sandwich_picture_content_description"
             android:scaleType="centerCrop"
@@ -31,29 +31,28 @@
             android:id="@+id/also_known_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_horizontal_8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/margin_horizontal_8dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/margin_vertical_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/image_iv"
-            tools:text="The Awesome Sandwich The Awesome Sandwich The Awesome Sandwich" />
+            app:layout_constraintTop_toBottomOf="@+id/image_iv" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="112dp" />
+            app:layout_constraintGuide_begin="@dimen/guideline_begin" />
 
         <TextView
             android:id="@+id/known_as_label"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:text="@string/detail_also_known_as_label"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/also_known_tv"
@@ -63,21 +62,20 @@
             android:id="@+id/origin_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_horizontal_8dp"
+            android:layout_marginRight="@dimen/margin_horizontal_8dp"
+            android:layout_marginTop="@dimen/margin_vertical_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/also_known_tv"
-            app:layout_constraintTop_toBottomOf="@+id/also_known_tv"
-            tools:text="Spain" />
+            app:layout_constraintTop_toBottomOf="@+id/also_known_tv" />
 
         <TextView
             android:id="@+id/origin_label"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:text="@string/detail_place_of_origin_label"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/origin_tv"
@@ -89,8 +87,8 @@
             android:id="@+id/ingredients_label"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:text="@string/detail_ingredients_label"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/ingredients_tv"
@@ -100,40 +98,36 @@
             android:id="@+id/description_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:paddingBottom="16dp"
+            android:layout_marginEnd="@dimen/margin_horizontal_8dp"
+            android:layout_marginRight="@dimen/margin_horizontal_8dp"
+            android:layout_marginTop="@dimen/margin_vertical_8dp"
+            android:paddingBottom="@dimen/padding_bottom_text"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="@+id/ingredients_tv"
-            app:layout_constraintTop_toBottomOf="@+id/ingredients_tv"
-            tools:text="Description of the sandwich Description of the sandwich Description of the sandwich
-Description of the sandwich Description of the sandwich" />
+            app:layout_constraintTop_toBottomOf="@+id/ingredients_tv" />
 
         <TextView
             android:id="@+id/description_label"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:text="@string/detail_description_label"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/description_tv"
             app:layout_constraintStart_toStartOf="parent" />
 
-
         <TextView
             android:id="@+id/ingredients_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_horizontal_8dp"
+            android:layout_marginRight="@dimen/margin_horizontal_8dp"
+            android:layout_marginTop="@dimen/margin_vertical_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/origin_tv"
-            app:layout_constraintTop_toBottomOf="@+id/origin_tv"
-            tools:text="Ingredients of the sandwich Ingredients of the sandwich Ingredients of the sandwich" />
+            app:layout_constraintTop_toBottomOf="@+id/origin_tv" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

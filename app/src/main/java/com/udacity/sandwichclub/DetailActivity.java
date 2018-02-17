@@ -18,19 +18,6 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = "DetailActivity";
-
-
-    private static final String KNOWN_AS = "alsoKnownAs";
-
-    private static final String SANDWICH_ORIGIN = "placeOfOrigin";
-
-    private static final String DESCRIPTION = "description";
-
-    private static final String IMAGE_PATH = "image";
-
-    private static final String INGREDIENTS = "ingredients";
-
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
@@ -39,10 +26,6 @@ public class DetailActivity extends AppCompatActivity {
     private TextView mIngredients;
     private TextView mAlsoKnownAs;
 
-    private String mOriginString;
-    private String mDescriptionString;
-    private List<String> mIngredientsList = new ArrayList<>();
-    private List<String> mAlsoKnownAsList = new ArrayList<>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,14 +73,20 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+
+        // Populate Origin text view
         mOrigin.setText(sandwich.getPlaceOfOrigin());
+
+        // Populate Description text view
         mDescription.setText(sandwich.getDescription());
+
+        // Populate Also Known As text view without the [] characters
         mAlsoKnownAs.setText(sandwich.getAlsoKnownAs().toString()
-                .replaceAll("\\[", "")
-                .replaceAll("\\]", ""));
+                .replaceAll("\\[|\\]", ""));
+
+        // Populate Ingredients text view without the [] characters
         mIngredients.setText(sandwich.getIngredients().toString()
-                .replaceAll("\\[", "")
-                .replaceAll("\\]", ""));
+                .replaceAll("\\[|\\]", ""));
 
     }
 }
