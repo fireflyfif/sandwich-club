@@ -15,9 +15,6 @@ public class JsonUtils {
 
     private static final String LOG_TAG = JsonUtils.class.getSimpleName();
 
-    private static final String NAMES_ARRAY = "sandwich_names";
-
-    private static final String SANDWICH_DETAILS = "sandwich_details";
 
     private static final String SANDWICH_NAME = "name";
 
@@ -45,7 +42,6 @@ public class JsonUtils {
 
             JSONObject sandwichJsonObject = new JSONObject(json);
 
-
             // Extract the current sandwich name
             JSONObject sandwichObjectName = sandwichJsonObject.getJSONObject(SANDWICH_NAME);
             // Get the string with the current name
@@ -72,6 +68,7 @@ public class JsonUtils {
             // Extract the current sandwich description
             String sandwichDescription = sandwichJsonObject.getString(DESCRIPTION);
 
+            // Extract the current sandwich image path
             String sandwichImagePath = sandwichJsonObject.getString(IMAGE_PATH);
 
             JSONArray ingredientsArray = sandwichJsonObject.getJSONArray(INGREDIENTS);
